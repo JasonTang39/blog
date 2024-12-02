@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
+             version="3.2">
+    <persistence-unit name="default">
+        <!-- 由 Hibernate 接管数据持久化 -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- 项目中所有实体类 -->
+        <class>com.example.blog.model.User</class>
+        <class>com.example.blog.model.Article</class>
+        <class>com.example.blog.model.Comment</class>
+
+        <properties>
+            <!-- 设置 MySQL 驱动 -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <!-- 设置 MySQL 数据库 URL -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/blog" />
+            <!-- 设置 MySQL 用户名 -->
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <!-- 设置 MySQL 密码 -->
+            <property name="jakarta.persistence.jdbc.password" value="123456" />
+
+            <!-- 设置 MySQL 方言 -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <!-- 设置 Hibernate 自动创建数据库表，并且当实体类受到修改时修改表结构 -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <!-- 设置 Hibernate 显示 SQL 语句 -->
+            <property name="hibernate.show_sql" value="true" />
+        </properties>
+    </persistence-unit>
+</persistence>
